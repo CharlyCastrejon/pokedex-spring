@@ -1,7 +1,9 @@
 services:
   - type: web
     name: pokedex-springboot
-    runtime: java
     plan: free
+    envVars:
+      - key: JAVA_VERSION
+        value: 21
     buildCommand: "./mvnw clean install"
     startCommand: "java -jar target/pokedex-0.0.1-SNAPSHOT.jar"
