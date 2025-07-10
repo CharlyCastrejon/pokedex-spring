@@ -1,7 +1,6 @@
 services:
-  - type: web
-    name: pokedex-springboot
+  - type: webg
+    name: pokedex-spring
+    runtime: docker
     plan: free
-    env: java
-    buildCommand: "./mvnw clean install"
-    startCommand: "java -jar target/pokedex-0.0.1-SNAPSHOT.jar"
+    dockerfilePath: ./Dockerfile
