@@ -1,5 +1,5 @@
 services:
-  - type: webg
+  - type: web
     name: pokedex-spring
     runtime: docker
     plan: free
