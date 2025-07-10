@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex with Spring Boot</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        h1 { color: #e3350d; }
+        .pokedex-container { max-width: 400px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        input[type="text"] { width: 70%; padding: 10px; border: 2px solid #ccc; border-radius: 5px; }
+        button { padding: 10px 15px; background-color: #3b4cca; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .pokemon-info { margin-top: 20px; }
+        img { width: 150px; height: 150px; }
+        .pokemon-data { text-transform: capitalize; }
+    </style>
+</head>
+<body>
+<div class="pokedex-container">
+    <h1>Pokedex with Spring Boot</h1>
+    <form th:action="@{/search}" method="post">
+        <input type="text" name="pokemonName" placeholder="Enter Pokémon name or number" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div th:if="${pokemon}" class="pokemon-info">
+        <img th:src="${pokemon.sprites.frontDefault}" alt="Pokémon sprite">
+        <div class="pokemon-data">
+            <h2 th:text="${pokemon.name}"></h2>
+            <p th:text="'#' + ${pokemon.id}"></p>
+        </div>
+    </div>
+
+    <div th:if="${showNotFound}" class="pokemon-info">
+        <p>Pokémon not found. Try again!</p>
+    </div>
+</div>
+</body>
+</html>
